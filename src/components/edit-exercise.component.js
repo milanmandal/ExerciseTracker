@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import Navbar from "./navbar.component"
+import API from '../uri';
 
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -25,7 +26,7 @@ export default class EditExercise extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:5000/userexercise/'+this.props.match.params.id)
+    axios.get(API+'/userexercise/'+this.props.match.params.id)
       .then(response => {
         this.setState({
           username:response.data.username,
@@ -77,7 +78,7 @@ export default class EditExercise extends Component {
 
     console.log(exercise);
 
-    axios.post('http://localhost:5000/userexercise/update/' + this.props.match.params.id, exercise)
+    axios.post(API+'/userexercise/update/' + this.props.match.params.id, exercise)
       .then(res => console.log(res.data));
         window.alert("Exercise edited");
         window.location="/list/"+this.state.username;

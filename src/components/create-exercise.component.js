@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import Navbar from "./navbar.component"
+import API from '../uri'
 import "react-datepicker/dist/react-datepicker.css";
 
 
@@ -68,7 +69,7 @@ export default class CreateExercise extends Component{
       date: this.state.date
     }
 
-    axios.post('http://localhost:5000/userexercise/addexercise', exercise)
+    axios.post(API+'/userexercise/addexercise', exercise)
       .then(res => 
         {
           window.alert("Exercise added!")
@@ -77,7 +78,6 @@ export default class CreateExercise extends Component{
         });
 
         this.setState({
-          username:'',
           description: '',
           distance: 0,
           duration: 0,

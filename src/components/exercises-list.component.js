@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Navbar from './navbar.component'
+import API from '../uri'
 
 const Exercise = props => (
   <tr>
@@ -25,7 +26,7 @@ export default class ExercisesList extends Component {
   }
 
  componentDidMount() {
-    axios.get('http://localhost:5000/userexercise/')
+    axios.get(API+'/userexercise/')
       .then(response => {
         this.setState({ exercises: response.data })
       })
@@ -35,7 +36,7 @@ export default class ExercisesList extends Component {
   }
 
   deleteExercise(id) {
-    axios.delete('http://localhost:5000/userexercise/'+id)
+    axios.delete(API+'/userexercise/'+id)
       .then(response => { console.log(response.data)});
       window.alert("Exercise Deleted");
       window.location="/list/"+this.props.match.params.name;

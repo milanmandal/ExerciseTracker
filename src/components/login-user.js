@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import API from '../uri'
 import NavbarSub from './navbarsub'
 
 export default class LoginUser extends Component {
@@ -36,7 +37,7 @@ export default class LoginUser extends Component {
       password: this.state.password,
     }
 
-    axios.post('http://localhost:5000/userinfo/login',user)
+    axios.post(API+'/userinfo/login',user)
       .then(res => {
         if(res.data!="fail")
         {

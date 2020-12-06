@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import NavbarSub from './navbarsub'
+import API from '../uri'
+
+
 export default class CreateUser extends Component {
   constructor(props) {
     super(props);
@@ -47,7 +50,7 @@ export default class CreateUser extends Component {
     }
 
 
-    axios.post('http://localhost:5000/userinfo/register', user)
+    axios.post(API+'/userinfo/register', user)
       .then(res =>{
         if(res.data!="fail" && res.data!="error")
         {
